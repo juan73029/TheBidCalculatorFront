@@ -1,0 +1,5 @@
+<mat-list>
+  <mat-list-item *ngFor="let fee of bid()?.fees">{{fee.name + ' Fee: '+ (fee.value| number : '1.2-2')}}</mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>Total: {{bid()?.totalPrice | number : '1.2-2'}}</mat-list-item>
+</mat-list>

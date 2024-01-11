@@ -1,0 +1,18 @@
+<div *ngIf="isLoaded() else spinner">
+  <mat-card>
+    <mat-card-content>
+      <app-textbox-calculator (onDebouncer)="setValue($event)" class="margin20"></app-textbox-calculator>
+      <mat-radio-group class="radio-group margin20" aria-label="Select an option">
+        <mat-radio-button (click)="setType(type)" [checked]="type=='Luxury'"
+          *ngFor="let type of vehicleTypes();let i=index" value="type">{{type}}</mat-radio-button>
+      </mat-radio-group>
+      <button mat-raised-button color="primary" (click)="calculateBid()">Calculate</button>
+    </mat-card-content>
+    <mat-card-footer class="margin20">
+      <app-total-info *ngIf="isCalculated()" [bid]="bid" class="margin20"></app-total-info>
+    </mat-card-footer>
+  </mat-card>
+</div>
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
